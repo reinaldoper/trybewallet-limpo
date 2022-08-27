@@ -23,9 +23,15 @@ class Login extends Component {
     this.setState({ [name]: value }, () => {
       const validEmail = this.validateEmail();
       const validadPassword = this.validPassword();
-      if (validEmail && validadPassword >= MIN_CARACTERES) {
+      const result = validadPassword >= MIN_CARACTERES;
+      console.log(result);
+      if (validEmail === true && result === true) {
         this.setState({
           habilit: false,
+        });
+      } else {
+        this.setState({
+          habilit: true,
         });
       }
     });
