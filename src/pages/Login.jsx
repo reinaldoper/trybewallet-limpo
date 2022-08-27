@@ -18,11 +18,6 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  /* componentDidMount() {
-    this.validateEmail();
-    this.validPassword();
-  } */
-
   handleChange({ target }) {
     const { name, value } = target;
     this.setState({ [name]: value }, () => {
@@ -57,31 +52,33 @@ class Login extends Component {
   render() {
     const { email, password, habilit } = this.state;
     return (
-      <form>
-        <input
-          type="email"
-          required
-          data-testid="email-input"
-          onChange={ this.handleChange }
-          value={ email }
-          name="email"
-        />
-        <input
-          type="text"
-          required
-          data-testid="password-input"
-          onChange={ this.handleChange }
-          value={ password }
-          name="password"
-        />
-        <button
-          type="button"
-          disabled={ habilit }
-          onClick={ this.handleSubmit }
-        >
-          Entrar
-        </button>
-      </form>
+      <section>
+        <form>
+          <input
+            type="email"
+            required
+            data-testid="email-input"
+            onChange={ this.handleChange }
+            value={ email }
+            name="email"
+          />
+          <input
+            type="text"
+            required
+            data-testid="password-input"
+            onChange={ this.handleChange }
+            value={ password }
+            name="password"
+          />
+          <button
+            type="button"
+            disabled={ habilit }
+            onClick={ this.handleSubmit }
+          >
+            Entrar
+          </button>
+        </form>
+      </section>
     );
   }
 }
