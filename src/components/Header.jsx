@@ -15,12 +15,12 @@ class Header extends Component {
     const result = expense.length > 0
       ? Math.round(somaValue.reduce((acc, curr) => acc + curr) * 100) / 100
       : 0;
-    const newValue = `Despesas: ${result}`;
-    const valueEmail = `Email: ${email}`;
+    /* const newValue = `Despesas: ${result}`;
+    const valueEmail = `Email: ${email}`; */
     return (
       <header>
-        <div data-testid="email-field">{valueEmail}</div>
-        <div data-testid="total-field">{newValue}</div>
+        <div data-testid="email-field">{email}</div>
+        <div data-testid="total-field">{result}</div>
         <div data-testid="header-currency-field">BRL</div>
       </header>
     );
