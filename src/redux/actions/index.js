@@ -20,12 +20,10 @@ export const errorApi = (error) => ({ type: REJECTED_API, error });
 export function fetchAPI() {
   return async (dispatch) => {
     dispatch(requestAPI());
-    const result = await fetch('https://economia.awesomeapi.com.br/json/all')
+    return fetch('https://economia.awesomeapi.com.br/json/all')
       .then((response) => response.json())
       .then((json) => dispatch(getCurrencies(json)))
       .catch((error) => dispatch(errorApi(error)));
-    console.log(result);
-    return result;
   };
 }
 
