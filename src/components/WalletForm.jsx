@@ -10,8 +10,8 @@ class WalletForm extends Component {
   };
 
   componentDidMount() {
-    const { wallet } = this.props;
-    wallet();
+    const { despesas } = this.props;
+    despesas();
   }
 
   handleChange = ({ target }) => {
@@ -65,7 +65,7 @@ class WalletForm extends Component {
 }
 
 WalletForm.propTypes = {
-  wallet: PropTypes.func.isRequired,
+  despesas: PropTypes.func.isRequired,
   currency: PropTypes.arrayOf.isRequired,
 };
 
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  wallet: () => dispatch(fetchAPI()),
+  despesas: () => dispatch(fetchAPI()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);

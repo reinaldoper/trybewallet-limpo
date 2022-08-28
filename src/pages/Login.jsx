@@ -24,7 +24,6 @@ class Login extends Component {
       const validEmail = this.validateEmail();
       const validadPassword = this.validPassword();
       const result = validadPassword >= MIN_CARACTERES;
-      console.log(result);
       if (validEmail === true && result === true) {
         this.setState({
           habilit: false,
@@ -45,7 +44,6 @@ class Login extends Component {
 
   validateEmail = () => {
     const { email } = this.state;
-    console.log(email);
     const reg = /\S+@\S+\.\S+/;
     return reg.test(email);
   };
