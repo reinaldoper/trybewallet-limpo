@@ -2,6 +2,7 @@ export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const REQUEST_API = 'REQUEST_API';
 export const REJECTED_API = 'REJECTED_API';
+export const REQUEST_WALLET = 'REQUEST_WALLET';
 
 export const submitLogin = (LoginProfile) => ({
   type: LOGIN_SUBMIT,
@@ -15,6 +16,8 @@ export const getCurrencies = (data) => ({
   data,
 });
 
+export const walletDispacth = (data) => ({ type: REQUEST_WALLET, data });
+
 export const errorApi = (error) => ({ type: REJECTED_API, error });
 
 export function fetchAPI() {
@@ -27,4 +30,9 @@ export function fetchAPI() {
   };
 }
 
-/* export { submitLogin }; */// Coloque aqui suas actions
+export async function fetchAPIRequest4() {
+  const request = await fetch('https://economia.awesomeapi.com.br/json/all');
+  const response = await request.json();
+  delete response.USDT;
+  return response;
+}
