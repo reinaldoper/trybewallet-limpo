@@ -15,6 +15,17 @@ class Table extends Component {
       return (
         <tbody key={ index }>
           <tr>
+            <td>Descrição</td>
+            <td>Tag</td>
+            <td>Método de pagamento</td>
+            <td>Valor</td>
+            <td>Moeda</td>
+            <td>Câmbio utilizado</td>
+            <td>Valor convertido</td>
+            <td>Moeda de conversão</td>
+            <td>Editar/Excluir</td>
+          </tr>
+          <tr>
             <td>{description}</td>
             <td>{tag}</td>
             <td>{method}</td>
