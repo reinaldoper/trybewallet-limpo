@@ -11,7 +11,8 @@ class Header extends Component {
       return ask * value;
     });
     /* let rounded = 0;
-    rounded = Math.round(somaValue.reduce((acc, curr) => acc + curr) * 100) / 100; */
+    rounded = Math.round(somaValue * 100) / 100;
+    const newvalue = rounded.reduce((acc, curr) => acc + curr); */
     const result = expense.length > 0
       ? Math.round(somaValue.reduce((acc, curr) => acc + curr) * 100) / 100
       : 0;

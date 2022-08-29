@@ -2,9 +2,7 @@
 import { LOGIN_SUBMIT } from '../actions';
 
 const initialState = {
-  user: {
-    email: '',
-  },
+  email: '',
 };
 
 const user = (state = initialState, action) => {
