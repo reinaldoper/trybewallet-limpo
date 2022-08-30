@@ -3,6 +3,7 @@ export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const REQUEST_API = 'REQUEST_API';
 export const REJECTED_API = 'REJECTED_API';
 export const REQUEST_WALLET = 'REQUEST_WALLET';
+export const REMOVE = 'REMOVE';
 
 export const submitLogin = (LoginProfile) => ({
   type: LOGIN_SUBMIT,
@@ -19,6 +20,8 @@ export const getCurrencies = (data) => ({
 export const walletDispacth = (data) => ({ type: REQUEST_WALLET, data });
 
 export const errorApi = (error) => ({ type: REJECTED_API, error });
+
+export const removet = (data) => ({ type: REMOVE, data });
 
 export function fetchAPI() {
   return async (dispatch) => {

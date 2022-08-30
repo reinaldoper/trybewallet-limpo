@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { removet } from '../redux/actions';
 
 class Table extends Component {
+  removeExpense = (id) => {
+    const { expense, dispatchTotal } = this.props;
+    const result = expense.filter((item) => item.id === id);
+    dispatchTotal(result);
+  };
+
   render() {
     const { expense } = this.props;
-    console.log(expense);
     const somaValue = expense.map((item, index) => {
-      const { value, currency, exchangeRates, description, tag, method } = item;
+      const { value, currency, exchangeRates, description, tag, method, id } = item;
       const { name, ask } = exchangeRates[currency];
       const result = ask * value;
       const valor = `${value}.00`;
@@ -25,7 +31,15 @@ class Table extends Component {
             <td>{convertMoeda}</td>
             <td>{convertReal}</td>
             <td>Real</td>
-            {/* <td>{' '}</td> */}
+            <td>
+              <button
+                type="button"
+                data-testid="delete-btn"
+                onClick={ () => this.removeExpense(id) }
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         </tbody>
       );
@@ -53,10 +67,15 @@ class Table extends Component {
 
 Table.propTypes = {
   expense: PropTypes.arrayOf.isRequired,
+  dispatchTotal: PropTypes.arrayOf.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   expense: state.wallet.expenses,
 });
 
-export default connect(mapStateToProps, null)(Table);
+const mapDispatchToProps = (dispatch) => ({
+  dispatchTotal: (data) => dispatch(removet(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
