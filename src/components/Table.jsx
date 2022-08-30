@@ -5,7 +5,6 @@ import { removet } from '../redux/actions';
 
 class Table extends Component {
   removeExpense = (id) => {
-    console.log(id);
     const { dispatchTotal } = this.props;
     dispatchTotal(id);
   };

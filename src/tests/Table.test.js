@@ -7,6 +7,7 @@ import App from '../App';
 
 describe('Testando a página inicial "Table"', () => {
   const currencys = 'USD';
+  const alimentacao = 'Alimentação';
   it('Test rendering and inicial values', () => {
     renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
 
@@ -57,10 +58,42 @@ describe('Testando a página inicial "Table"', () => {
     expect(currencyInput).toHaveValue(currencys);
     userEvent.selectOptions(inputMethod, 'Dinheiro');
     expect(inputMethod).toHaveValue('Dinheiro');
-    userEvent.selectOptions(tagInput, 'Alimentação');
-    expect(tagInput).toHaveValue('Alimentação');
+    userEvent.selectOptions(tagInput, alimentacao);
+    expect(tagInput).toHaveValue(alimentacao);
+
     userEvent.click(button);
 
-    /* await waitFor(() => expect(global.fetch).toBeCalledTimes(2)); */
+    /* const dolar = await screen.findByText(2.00); */
+    const name = screen.getByText('Dinheiro');
+    const vale = screen.getByText(alimentacao);
+    const brasil = await screen.findByText('Dólar Americano/Real Brasileiro');
+    /* const dez = await screen.findByText('10.25'); */
+    /* const cinco = screen.getByText(5.12); */
+    const cafe = screen.getByText('cafe');
+    const moedaReal = screen.getByText('Real');
+    const deleteButon = screen.getByText('Delete');
+
+    /* expect(dolar).toBeInTheDocument(); */
+    expect(name).toBeInTheDocument();
+    expect(vale).toBeInTheDocument();
+    expect(brasil).toBeInTheDocument();
+    /* expect(dez).toBeInTheDocument();
+    expect(cinco).toBeInTheDocument(); */
+    expect(cafe).toBeInTheDocument();
+    expect(moedaReal).toBeInTheDocument();
+    expect(deleteButon).toBeInTheDocument();
+
+    userEvent.click(deleteButon);
+
+    /* expect(undefined).toContainElement(); */
+
+    /* expect(name).not.toContainElement();
+    expect(vale).not.toContainElement();
+    expect(brasil).not.toContainElement(); */
+    /* expect(dez).toContainElement();
+    expect(cinco).toContainElement(); */
+    /* expect(cafe).not.toContainElement();
+    expect(moedaReal).not.toContainElement();
+    expect(deleteButon).not.toContainElement(); */
   });
 });
