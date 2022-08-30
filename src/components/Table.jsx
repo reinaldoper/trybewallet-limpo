@@ -5,14 +5,14 @@ import { removet } from '../redux/actions';
 
 class Table extends Component {
   removeExpense = (id) => {
-    const { expense, dispatchTotal } = this.props;
-    const result = expense.filter((item) => item.id === id);
-    dispatchTotal(result);
+    console.log(id);
+    const { dispatchTotal } = this.props;
+    dispatchTotal(id);
   };
 
   render() {
     const { expense } = this.props;
-    const somaValue = expense.map((item, index) => {
+    const somaValue = expense.map((item) => {
       const { value, currency, exchangeRates, description, tag, method, id } = item;
       const { name, ask } = exchangeRates[currency];
       const result = ask * value;
@@ -21,7 +21,7 @@ class Table extends Component {
       const convertReal = Math.round((result) * 100) / 100;
       /* const soma = Math.round(result * 100) / 100; */
       return (
-        <tbody key={ index }>
+        <tbody key={ id }>
           <tr>
             <td>{description}</td>
             <td>{tag}</td>

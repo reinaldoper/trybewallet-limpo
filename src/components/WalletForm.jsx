@@ -25,6 +25,7 @@ class WalletForm extends Component {
   handClickAdd = async () => {
     const { dispatchTotal, expense } = this.props;
     const id = expense.length;
+    console.log(id);
     dispatchTotal({ ...this.state, id, exchangeRates: await fetchAPIRequest4() });
     this.setState({
       value: '',

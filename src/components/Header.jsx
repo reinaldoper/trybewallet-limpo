@@ -10,14 +10,12 @@ class Header extends Component {
       const { ask } = exchangeRates[currency];
       return ask * value;
     });
-    /* let rounded = 0;
-    rounded = Math.round(somaValue * 100) / 100;
-    const newvalue = rounded.reduce((acc, curr) => acc + curr); */
-    const result = expense.length > 0
+    let result = expense.length > 0
       ? Math.round(somaValue.reduce((acc, curr) => acc + curr) * 100) / 100
       : 0;
-    /* const newValue = `Despesas: ${result}`;
-    const valueEmail = `Email: ${email}`; */
+    if (result === 0) {
+      result = '0.00';
+    }
     return (
       <header>
         <div data-testid="email-field">{email}</div>
