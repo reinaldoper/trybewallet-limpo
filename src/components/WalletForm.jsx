@@ -23,6 +23,7 @@ class WalletForm extends Component {
     const { expense, idState } = this.props;
     const result = expense.find((item) => item.id === idState);
     console.log(result);
+    console.log(this.state);
     this.setState({
       ...result,
       habilit: false,
@@ -38,7 +39,16 @@ class WalletForm extends Component {
     const { dispatchTotal, expense/* , edit */ } = this.props;
     /* if (edit) this.atualiza(); */
     const id = expense.length;
-    dispatchTotal({ ...this.state, id, exchangeRates: await fetchAPIRequest4() });
+    const { description, value, method, tag, currency } = this.state;
+    dispatchTotal({
+      description,
+      value,
+      method,
+      tag,
+      currency,
+      id,
+      exchangeRates: await fetchAPIRequest4(),
+    });
     this.setState({
       value: '',
       description: '',
@@ -60,8 +70,6 @@ class WalletForm extends Component {
       }
       return item;
     });
-    /* if (edit) this.atualiza(); */
-    /* const id = idState; */
     editTotal(result);
     this.setState({
       value: '',

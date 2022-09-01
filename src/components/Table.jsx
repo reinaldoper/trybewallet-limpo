@@ -20,9 +20,9 @@ class Table extends Component {
       const { value, currency, exchangeRates, description, tag, method, id } = item;
       const { name, ask } = exchangeRates[currency];
       const result = ask * value;
-      const valor = `${value}.00`;
-      const convertMoeda = Math.round(ask * 100) / 100;
-      const convertReal = Math.round((result) * 100) / 100;
+      const valor = Number(value).toFixed(2);
+      const convertMoeda = Number(ask).toFixed(2);
+      const convertReal = Number(result).toFixed(2);
       /* const soma = Math.round(result * 100) / 100; */
       return (
         <tbody key={ id }>
