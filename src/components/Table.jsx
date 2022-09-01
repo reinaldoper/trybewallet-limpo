@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removet } from '../redux/actions';
+import { removet, edited } from '../redux/actions';
 
 class Table extends Component {
   removeExpense = (id) => {
     const { dispatchTotal } = this.props;
     dispatchTotal(id);
+  };
+
+  editExpense = (id) => {
+    const { editTotal } = this.props;
+    editTotal(id);
   };
 
   render() {
@@ -31,6 +36,13 @@ class Table extends Component {
             <td>{convertReal}</td>
             <td>Real</td>
             <td>
+              <button
+                type="button"
+                data-testid="edit-btn"
+                onClick={ () => this.editExpense(id) }
+              >
+                Editar despesa
+              </button>
               <button
                 type="button"
                 data-testid="delete-btn"
@@ -67,6 +79,7 @@ class Table extends Component {
 Table.propTypes = {
   expense: PropTypes.arrayOf.isRequired,
   dispatchTotal: PropTypes.arrayOf.isRequired,
+  editTotal: PropTypes.arrayOf.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -75,6 +88,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchTotal: (data) => dispatch(removet(data)),
+  editTotal: (data) => dispatch(edited(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
