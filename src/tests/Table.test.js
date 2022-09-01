@@ -72,6 +72,7 @@ describe('Testando a página inicial "Table"', () => {
     const cafe = screen.getByText('cafe');
     const moedaReal = screen.getByText('Real');
     const deleteButon = screen.getByText('Delete');
+    const editButon = screen.getByTestId('edit-btn');
 
     /* expect(dolar).toBeInTheDocument(); */
     expect(name).toBeInTheDocument();
@@ -82,18 +83,40 @@ describe('Testando a página inicial "Table"', () => {
     expect(cafe).toBeInTheDocument();
     expect(moedaReal).toBeInTheDocument();
     expect(deleteButon).toBeInTheDocument();
+    expect(editButon).toBeInTheDocument();
+
+    const editDespesa = screen.getByTestId('add-btn');
+    userEvent.click(editButon);
+    expect(name).toBeInTheDocument();
+    expect(vale).toBeInTheDocument();
+    expect(brasil).toBeInTheDocument();
+    expect(cafe).toBeInTheDocument();
+    expect(moedaReal).toBeInTheDocument();
+    expect(editButon).toBeInTheDocument();
+
+    /* userEvent.type(inputName, '4');
+    expect(inputName).toHaveValue(4);
+    userEvent.type(inputDescription, 'leite');
+    expect(inputDescription).toHaveValue('leite');
+    userEvent.selectOptions(currencyInput, currencys);
+    expect(currencyInput).toHaveValue(currencys);
+    userEvent.selectOptions(inputMethod, 'Cartão de débito');
+    expect(inputMethod).toHaveValue('Cartão de débito');
+    userEvent.selectOptions(tagInput, alimentacao);
+    expect(tagInput).toHaveValue(alimentacao);
+    userEvent.click(deleteButon); */
+
+    userEvent.click(editDespesa);
+
+    expect(name).toBeInTheDocument();
+    expect(vale).toBeInTheDocument();
+    expect(brasil).toBeInTheDocument();
+    /* expect(dez).toBeInTheDocument();
+    expect(cinco).toBeInTheDocument(); */
+    expect(cafe).toBeInTheDocument();
+    expect(moedaReal).toBeInTheDocument();
+    expect(deleteButon).toBeInTheDocument();
 
     userEvent.click(deleteButon);
-
-    /* expect(undefined).toContainElement(); */
-
-    /* expect(name).not.toContainElement();
-    expect(vale).not.toContainElement();
-    expect(brasil).not.toContainElement(); */
-    /* expect(dez).toContainElement();
-    expect(cinco).toContainElement(); */
-    /* expect(cafe).not.toContainElement();
-    expect(moedaReal).not.toContainElement();
-    expect(deleteButon).not.toContainElement(); */
   });
 });

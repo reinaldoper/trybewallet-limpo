@@ -135,7 +135,7 @@ class WalletForm extends Component {
           </select>
           <button
             type="button"
-            /* data-testid="edit-btn" */
+            data-testid="add-btn"
             onClick={ !edit ? this.handClickAdd : this.editClickAdd }
           >
             {edit ? 'Editar despesa' : 'Adicionar despesa'}
